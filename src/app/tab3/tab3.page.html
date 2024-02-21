@@ -1,17 +1,48 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Лабораторна робота №1
     </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>Виконала Тракало Анастасія КН-31, Варіант №10</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання №3</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Згенерувати матрицю
+        розміром NxN.
+        Виокремити за
+        допомогою кольору
+        усі непарні від’ємні
+        елементи більші за -
+        10.
+      </p>
+      <ion-item>
+        <ion-label>
+          <ion-input id="a" #a label="Size of matrix" labelPlacement="floating"
+            placeholder="Enter a number:"></ion-input>
+        </ion-label>
+      </ion-item>
+      <ion-button shape="round" (click)="generateMatrix(a.value)">Generate Matrix</ion-button>
+      <ion-item>
+        <ion-grid *ngIf="matrix">
+          <ion-row *ngFor="let row of matrix; let i = index">
+            <ion-col *ngFor="let element of row; let j = index"
+              [style.background-color]="highlight(element) ? 'green' : 'black'">
+              {{element}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

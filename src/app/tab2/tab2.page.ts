@@ -7,6 +7,27 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor() { }
+  a: number = 0;
+  b: number = 0;
+  result: number = 0;
 
+  calculateCount(a: any, b: any) {
+    try {
+      this.a = parseFloat(a);
+      this.b = parseFloat(b);
+      this.result = 0;
+
+      for (let i = this.a; i <= this.b; i++) {
+        if (i % 3 === 2 && i % 2 === 0) {
+          this.result++;
+        }
+      }
+    }
+
+    catch (error) {
+      console.log(error);
+    }
+
+}
 }
