@@ -11,13 +11,24 @@ export class Tab3Page {
   constructor() { }
   
   generateMatrix(size: any): void {
-    this.matrix = [];
-    for (let i = 0; i < size; i++) {
-      const row = [];
-      for (let j = 0; j < size; j++) {
-        row.push(Math.floor(Math.random() * 21) - 10); // Random number between -10 and 10
+    try {
+      this.size = parseInt(size); 
+
+      if (isNaN(this.size) || this.size <= 0) {
+        throw new Error('Invalid matrix size.');
       }
-      this.matrix.push(row);
+
+      this.matrix = [];
+
+      for (let i = 0; i < this.size; i++) {
+        const row = [];
+        for (let j = 0; j < this.size; j++) {
+          row.push(Math.floor(Math.random() * 21) - 10);
+        }
+        this.matrix.push(row);
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
