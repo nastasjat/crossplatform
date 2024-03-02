@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Лабораторна робота №3
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>Виконала Тракало Анастасія КН-31, Варіант №10</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Лабораторні роботи</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text>Позначити кольором всі пари викладача із заданою групою (назву
+        групи ввести у формі).</ion-text>
+      <ion-item>
+        <ion-label position="default">Group:</ion-label>
+        <ion-input type="text" [(ngModel)]="inputGroup"></ion-input>
+      </ion-item>
+      <ion-button color='dark' shape="round" expand="block" (click)="load()">Load Schedule</ion-button>
+    </ion-card-content>
+    <ion-item>
+      <ion-list>
+        <ion-item button *ngFor="let item of data_lectures; index as i" detail (click)="toggleDetails(i)">
+          <ion-label *ngIf="!showDetails[i]">
+            <p [ngStyle]="{color: getColor(item.group)}"> {{item.subject}} <br> {{item.group}}
+            </p>
+          </ion-label>
+          <ion-text *ngIf="showDetails[i]">
+            {{item.date}},
+            {{item.day}}<br>
+            <span>Classroom: </span>{{item.classroom}}
+          </ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+  </ion-card>
+</ion-content>

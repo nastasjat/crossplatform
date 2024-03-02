@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'graph',
     loadChildren: () => import('./graph/graph.module').then( m => m.GraphPageModule)
+  },
+  {
+    path: 'json',
+    loadChildren: () => import('./json/json.module').then( m => m.JsonPageModule)
   }
 ];
 @NgModule({
