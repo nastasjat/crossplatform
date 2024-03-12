@@ -1,0 +1,12 @@
+.white-text {
+  color: white;
+}
+
+.bordered-table {
+  border-collapse: collapse;
+}
+
+.bordered-table th, .bordered-table td {
+  border: 1px solid white;
+  padding: 8px;
+}

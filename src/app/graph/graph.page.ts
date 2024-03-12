@@ -72,7 +72,7 @@ export class GraphPage implements OnInit {
         }
       this.xx.push(x.toFixed(1));
       this.yy.push(parseFloat(y.toFixed(1)));
-      let s = 'x = ' + x.toFixed(1) + 'y = ' + y.toFixed(1);
+      let s = 'x = ' + x.toFixed(1) + ' y = ' + y.toFixed(1);
       this.data.push(s);
       x = x + this.h;
     }

@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Лабораторна робота №4
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>Виконала Тракало Анастасія КН-31, Варіант №10</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Лабораторні роботи</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання</ion-card-title>
+      <p>Скласти програму з абстрактним батьківським класом і двома
+        об'єктами – нащадками.
+        Реалізувати циклічне виведення параметрів об'єктів, використовуючи 
+        поліморфний контейнер -
+        масив об'єктів базового класу (кількість об'єктів >= 5).<br>
+        Організувати обчислення середньої вартості журналів і середньої вартості
+        газет.
+      </p>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-input type="number" value="5" #Inputn></ion-input>
+      <ion-button (click)="calculate(Inputn.value)" shape="round" color='dark'>Calculate</ion-button>
+      <table class="white-text bordered-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Print Circulation</th>
+            <th>Price</th>
+            <th>Number of Pages</th>
+            <th>Page Price</th>
+            <th>Circulation Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of media">
+            <td>{{ item.name }}</td>
+            <td>{{ item.circulation }}</td>
+            <td>{{item.name === 'Magazine' ? item.price : '' }}</td>
+            <td>{{ item.name === 'Newspaper' ? item.numPages : '' }}</td>
+            <td>{{ item.name === 'Newspaper' ? item.pageCost : '' }}</td>
+            <td>{{ item.circulationCost }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class=" white-text">Average Magazine Cost: {{this.avgMagazineCost}}</p>
+      <p class="white-text">Average Newspaper Cost: {{this.avgNewspaperCost}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
