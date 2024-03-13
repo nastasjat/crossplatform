@@ -10,3 +10,10 @@
   border: 1px solid white;
   padding: 8px;
 }
+
+@media screen and (max-width: 432px) {
+  .white-text.bordered-table th,
+  .white-text.bordered-table td {
+    font-size: 10px; 
+  }
+}
