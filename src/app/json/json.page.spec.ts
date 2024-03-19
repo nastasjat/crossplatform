@@ -5,11 +5,11 @@ describe('JsonPage', () => {
   let component: JsonPage;
   let fixture: ComponentFixture<JsonPage>;
 
-  beforeEach(async(() => {
+  beforeEach(async() => {
     fixture = TestBed.createComponent(JsonPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();

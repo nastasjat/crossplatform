@@ -6,7 +6,11 @@ export abstract class PrintMedia {
     pageCost!: number;
     circulationCost!: number;
 
-    constructor() { };
+    constructor(name: string, circulation: number) {
+        if (circulation <= 0 || !Number.isInteger(circulation)) throw new Error('Invalid circulation');
+        this.name = name;
+        this.circulation = circulation;
+      };
 
     abstract calculateCost(): any;
 }
