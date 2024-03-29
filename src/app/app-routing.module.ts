@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'abstract',
     loadChildren: () => import('./abstract/abstract.module').then( m => m.AbstractPageModule)
+  },
+  {
+    path: 'interface',
+    loadChildren: () => import('./interface/interface.module').then( m => m.InterfacePageModule)
   }
 ];
 @NgModule({
