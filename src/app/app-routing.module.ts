@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'interface',
     loadChildren: () => import('./interface/interface.module').then( m => m.InterfacePageModule)
+  },
+  {
+    path: 'servicepage',
+    loadChildren: () => import('./servicepage/servicepage.module').then( m => m.ServicepagePageModule)
   }
 ];
 @NgModule({
