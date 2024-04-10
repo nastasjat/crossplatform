@@ -1,0 +1,41 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Product</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Name: </ion-label>
+        <ion-input id="name" type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Unit: </ion-label>
+        <ion-input id="unit" type="text" formControlName="unit"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Quantity: </ion-label>
+        <ion-input id="qty" type="number" formControlName="qty"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Price for product unit: </ion-label>
+        <ion-input id="price" type="number" formControlName="price"></ion-input>
+      </ion-item>
+      <ion-card formArrayName="manufacturers">
+        <ion-card-header>
+          <ion-card-title>Manufacturers</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button color="dark" (click)="addManufacturers()">
+            <ion-icon slot="start" name="add"></ion-icon>Add Manufacturer
+          </ion-button>
+          <ion-item *ngFor="let manufacturer of getManufacturers(); let i = index">
+            <ion-input type="text" formControlName={{i}} placeholder="Manufacturer"></ion-input>
+            <ion-button color="danger" (click)="deleteManufacturers(i)">
+              <ion-icon slot="start" name="trash"></ion-icon>Delete</ion-button>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+  <ion-button type="submit" color="dark" expand="block" [disabled]="!productForm.valid">Submit</ion-button>
+</form>
