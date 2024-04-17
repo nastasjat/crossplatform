@@ -1,1 +1,18 @@
-<app-product-form></app-product-form>
+<app-product-form (productNew)="addProduct($event)"></app-product-form>
+<ion-card *ngFor="let product of products; let i = index">
+    <ion-card-header>
+        <ion-card-title>{{product.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-item>Unit of measure: {{product.unit}}</ion-item>
+        <ion-item>Quantity: {{product.qty}}</ion-item>
+        <ion-item>Price for product unit: {{product.price}}</ion-item>
+        <h3>Manufacturers:</h3>
+        <ion-item *ngFor="let manufacturer of product.manufacturers">
+            {{manufacturer}}
+        </ion-item>
+    </ion-card-content>
+    <ion-button (click)="update()">Update</ion-button>
+    <app-update-form [product]='product' [show]="show_updated" *ngIf="show_updated" (showUpd)="showNew($event)"
+        (productUpd)="save_changes($event,i)"></app-update-form>
+</ion-card>

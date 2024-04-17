@@ -1,0 +1,17 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>
+      <ion-label position="floating">Name:</ion-label>
+      <ion-input [value]="product.name" #Inputname></ion-input>
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-label position="floating">Unit:</ion-label>
+    <ion-input [value]="product.unit" #Inputunit></ion-input>
+    <ion-label position="floating">Quantity:</ion-label>
+    <ion-input [value]="product.qty" #Inputqty></ion-input>
+    <ion-label position="floating">Price:</ion-label>
+    <ion-input [value]="product.price" #Inputprice></ion-input>
+  </ion-card-content>
+  <ion-button (click)="save_upd(Inputname.value, Inputunit.value, Inputqty.value, Inputprice.value)">Save</ion-button>
+</ion-card>

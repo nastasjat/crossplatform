@@ -11,6 +11,7 @@ import { HeaderModule } from '../header/header.component.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductFormModule } from './product-form/product-form.component.module';
 import { ViewFormModule } from './view-form/view-form.component.module';
+import { UpdateFormModule } from './update-form/update-form.component.module';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { ViewFormModule } from './view-form/view-form.component.module';
     HeaderModule,
     ReactiveFormsModule,
     ProductFormModule,
-    ViewFormModule
+    ViewFormModule,
+    UpdateFormModule
   ],
   declarations: [FormPage]
 })
