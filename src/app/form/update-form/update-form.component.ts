@@ -48,20 +48,23 @@ export class UpdateFormComponent  implements OnInit {
     this.show = false;
     let errorMessage = '';
 
+    let quantity = parseFloat(qty);
+    let cost = parseFloat(price);
+
     if (!this.validate_unit(unit)) {
       errorMessage += 'Invalid unit.\n';
     }
 
-    if (!this.validate_price(price)) {
+    if (!this.validate_price(cost)) {
       errorMessage += 'Invalid price.\n';
     }
 
-    if (!this.validate_quantity(qty)) {
+    if (!this.validate_quantity(quantity)) {
       errorMessage += 'Invalid quantity.\n';
     }
 
     if (errorMessage === '') {
-      this.product = new Product(name, unit, qty, price, this.product.manufacturers);
+      this.product = new Product(name, unit, quantity, cost, this.product.manufacturers);
       this.productUpd.emit(this.product);
       this.showUpd.emit(this.show);
     } else {

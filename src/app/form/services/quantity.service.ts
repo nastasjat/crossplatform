@@ -6,7 +6,10 @@ import { Injectable } from '@angular/core';
 export class QuantityService {
 
   validate_qty(value: number): boolean {
-    return Number.isInteger(value) && value >= 0;
+    if (Number.isInteger(value) && value >= 0) {
+      return true;
+    }
+    return false;
   }
 
   constructor() { }
