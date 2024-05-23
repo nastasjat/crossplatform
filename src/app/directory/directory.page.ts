@@ -18,7 +18,7 @@ export class DirectoryPage implements OnInit {
 
   //observable service
   private configService = new ConfigService();
-  //subscriptions array
+  //observables array
   private subscriptions: Subscription[] = [];
 
   studentList = new StudentList(this.configService);
@@ -70,5 +70,4 @@ export class DirectoryPage implements OnInit {
     this.subscriptions
       .forEach(s => s.unsubscribe());
   }
-
 }
