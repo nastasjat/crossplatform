@@ -14,14 +14,14 @@ export class ConfigService {
 
     //change current specialty
     setSpecialty(specialty: Specialty) {
-        this.specialty$.next(specialty) //generate next specialty from specialties list
+        console.log('There\'re changes!')
+        if (specialty != undefined)
+            this.specialty$.next(specialty) //generate next specialty from specialties list
     }
 
     constructor() {
     }
 }
 
-    //get initial specialty
-var specialtyList = new SpecialtyList();
-const DEFAULT_SPECIALTY = specialtyList.specialty.get(0);
-
+//get initial specialty
+const DEFAULT_SPECIALTY = { "id": 1, "name": "Computer Science"};
