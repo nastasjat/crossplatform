@@ -1,0 +1,44 @@
+<ion-card *ngIf="!editing">
+  <ion-item>Name: {{ student.firstName }} </ion-item>
+  <ion-item>Last Name: {{ student.lastName }}</ion-item>
+  <ion-item>StudentId: {{ student.studentId }}</ion-item>
+  <ion-item>GPA: {{ student.gpa }}</ion-item>
+  <ion-item>Group: {{ student.group }}</ion-item>
+  <ion-item>
+    <ion-button color="dark" (click)="deleteStudent()">
+      <ion-icon name="trash-outline"></ion-icon>
+      Delete</ion-button>
+    <ion-button color="dark" (click)="editStudentShow()">
+      <ion-icon name="pencil-outline"></ion-icon>
+      Edit
+    </ion-button>
+  </ion-item>
+</ion-card>
+<ion-card *ngIf="editing">
+  <ion-item>
+    <ion-label position="stacked">Input First Name:</ion-label>
+    <ion-input type="text" #InputFirstName [value]="student.firstName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Input Last Name:</ion-label>
+    <ion-input type="text" #InputLastName [value]="student.lastName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Input StudentId:</ion-label>
+    <ion-input type="number" #InputStudentId [value]="student.studentId"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Input GPA:</ion-label>
+    <ion-input type="number" min="60" #InputGPA [value]="student.gpa"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Input Group:</ion-label>
+    <ion-input type="text" #InputGroup [value]="student.group"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-button color="dark"
+      (click)="saveEdit(InputFirstName.value, InputLastName.value, InputGroup.value, InputGPA.value, InputStudentId.value)">
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+      Save</ion-button>
+  </ion-item>
+</ion-card>

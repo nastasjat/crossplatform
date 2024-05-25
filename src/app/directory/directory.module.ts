@@ -8,16 +8,22 @@ import { DirectoryPageRoutingModule } from './directory-routing.module';
 
 import { DirectoryPage } from './directory.page';
 import { HeaderModule } from '../header/header.component.module';
+import { StudentModule } from "./student/student.component.module";
+import { StudentEditModule } from "./student-edit/student-edit.component.module";
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    DirectoryPageRoutingModule,
-    HeaderModule
-  ],
-  declarations: [DirectoryPage]
+    declarations: [DirectoryPage],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        DirectoryPageRoutingModule,
+        HeaderModule,
+        StudentModule,
+        StudentEditModule,
+        ReactiveFormsModule
+    ]
 })
 export class DirectoryPageModule {}

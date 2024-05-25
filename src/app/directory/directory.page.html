@@ -1,5 +1,5 @@
 <app-header name="Лабораторна робота №10"></app-header>
-<ion-content [fullscreen]="true">
+<!-- <ion-content [fullscreen]="true">
   <ion-item>
     <ion-button (click)="nextSpecialty()">Next Specialty:</ion-button>
     <ion-label>
@@ -41,5 +41,58 @@
         Add Student
       </ion-button>
     </ion-card-content>
+  </ion-card>
+</ion-content> -->
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="show">
+    <ion-card-header>
+      <ion-card-title>Specialty</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>
+          <h2>Current Specialty: <span style="color: yellow;">{{specialty.name}}</span></h2>
+        </ion-label>
+        <ion-button color="dark" (click)="editSpecialtyShow()">
+          <ion-icon name="pencil-outline"></ion-icon>
+          Edit
+        </ion-button>
+        <ion-button color="dark" (click)="deleteSpecialty()">
+          <ion-icon name="trash-bin-outline"></ion-icon>
+          Delete
+        </ion-button>
+      </ion-item>
+      <ion-button color="dark" (click)="nextSpecialty()">
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+        Next Specialty
+      </ion-button>
+    </ion-card-content>
+
+    <ion-button color="dark" (click)="addSpecialtyShow()">
+      <ion-icon name="add-outline"></ion-icon>
+      Add New Specialty
+    </ion-button>
+    <ion-button color="dark" (click)="addStudentShow()">
+      <ion-icon name="add-outline"></ion-icon>
+      Add New Student
+    </ion-button>
+    <ion-item *ngIf="showNewSpecialty || showEditSpecialty">
+      <ion-label position="stacked">Input New Specialty</ion-label>
+      <ion-input [formControl]="specForm"></ion-input>
+      <ion-button color="dark" (click)="addSpecialty()">
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+        Save</ion-button>
+    </ion-item>
+    <app-student-edit *ngIf="showNewStudent" [id]="studentList.studentList[studentList.studentList.length-1].id"
+      [spec_id]="specialty.id" (studentChange)="addStudent($event)"></app-student-edit>
+  </ion-card>
+
+  <ion-card *ngIf="show">
+    <ion-card-header>
+      <ion-card-title>Students</ion-card-title>
+    </ion-card-header>
+    <app-student *ngFor="let student of studentList.searchStudent; let j = index" [student]="student"
+      [fbService]="fbservice" (del)="deleteStudent($event)"></app-student>
   </ion-card>
 </ion-content>

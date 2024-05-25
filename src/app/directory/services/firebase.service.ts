@@ -13,26 +13,6 @@ export class FirebaseService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  //create Specialty
-  createSpecialty(spec: Specialty) {
-    return this.specialtyListRef?.push({
-      id: spec.id,
-      name: spec.name
-    });
-  }
-
-  //create Student
-  createStudent(student: Student) {
-    return this.studentListRef?.push({
-      firstName: student.firstName,
-      lastName: student.lastName,
-      studentId: student.studentId,
-      gpa: student.gpa,
-      group: student.group,
-      specialty_id: student.specialty_id
-    });
-  }
-
   //get single record
   getRecord(id: string, database: string) {
     this.dbRef = this.db.object('/' + database + id); //reference to an object
@@ -57,6 +37,7 @@ export class FirebaseService {
   updateStudent(id: number, student: Student, database: string) {
     this.dbRef = this.db.object('/' + database + '/' + id);
     return this.dbRef.update({
+      id: student.id,
       specialty_id: student.specialty_id,
       firstName: student.firstName,
       lastName: student.lastName,
@@ -66,7 +47,7 @@ export class FirebaseService {
     })
   }
 
-  //update Specialty
+  //for adding and updating specialties
   updateSpecialty(id: number, specialty: Specialty, database: string) {
     this.dbRef = this.db.object('/' + database + '/' + id);
     return this.dbRef.update({
