@@ -1,12 +1,13 @@
+import { StudentAddComponent } from './student-add.component';
 import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { StudentComponent } from './student.component';
+
 
 @NgModule({
-  declarations: [StudentComponent],
+  declarations: [StudentAddComponent],
   imports: [IonicModule, ReactiveFormsModule, CommonModule],
-  exports: [StudentComponent]
+  exports: [StudentAddComponent]
 })
-export class StudentModule {}
+export class StudentAddModule {}

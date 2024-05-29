@@ -8,8 +8,8 @@ import { DirectoryPageRoutingModule } from './directory-routing.module';
 
 import { DirectoryPage } from './directory.page';
 import { HeaderModule } from '../header/header.component.module';
-import { StudentModule } from "./student/student.component.module";
 import { StudentEditModule } from "./student-edit/student-edit.component.module";
+import { StudentAddModule } from "./student-add/student-add.component.module";
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -21,8 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         IonicModule,
         DirectoryPageRoutingModule,
         HeaderModule,
-        StudentModule,
         StudentEditModule,
+        StudentAddModule,
         ReactiveFormsModule
     ]
 })

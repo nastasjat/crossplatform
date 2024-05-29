@@ -1,8 +1,8 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { FirebaseService } from './../services/firebase.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Student } from '../services/Student';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-student-edit',
@@ -11,40 +11,40 @@ import { CommonModule } from '@angular/common';
 })
 export class StudentEditComponent  implements OnInit {
 
-  @Input() id!: number;
-  @Input() spec_id!: number;
-  @Output() studentChange: EventEmitter<Student> = new EventEmitter<Student>();
+  dbStudent = 'Student';
 
-  // Input for Students
-  formStudent!: FormGroup;
-  constructor(fb: FormBuilder) {
-    this.formStudent = fb.group({
-      firstName: [''],
-      lastName: [''],
-      studentId: [''],
-      gpa: [''],
-      group: [''],
-    });
+  @Input() student!: Student;
+  @Input() fbService!: FirebaseService;
+  
+  //deleting 
+  @Output() del = new EventEmitter<boolean>();
+  editing: boolean = false;
+  constructor() { }
+  
+  //delete Student
+  deleteStudent() {
+    if (window.confirm('Are you sure you want to delete?')) {
+      let id = this.student.id - 1;
+      this.fbService.deleteRecord(id.toFixed(), this.dbStudent);
+      this.del.emit(true);
+    }
   }
 
-  addStudent() {
-    let student = new Student();
-    let s: number = this.id + 1;
-    
-    student.id = s;
-    student.firstName = this.formStudent.value.firstName;
-    student.lastName = this.formStudent.value.lastName;
-    student.studentId = this.formStudent.value.studentId;
-    student.group = this.formStudent.value.group;
-    student.gpa = this.formStudent.value.gpa;
-
-    student.specialty_id = this.spec_id;
-    this.studentChange.emit(student);
+  editStudentShow() {
+    this.editing = true;
   }
 
+  saveEdit(firstName: any, lastName: any, group: any, gpa: any, studentId: any) {
+    console.log('Edit');
+    this.student.firstName = firstName;
+    this.student.lastName = lastName;
+    this.student.group = group;
+    this.student.gpa = gpa;
+    this.student.studentId = studentId;
+    this.editing = false;
+    let s: number = this.student.id - 1;
+    this.fbService.updateStudent(s, this.student, this.dbStudent);
+  }
   ngOnInit() {}
 
 }
-
-
-

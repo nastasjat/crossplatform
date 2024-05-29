@@ -1,49 +1,4 @@
 <app-header name="Лабораторна робота №10"></app-header>
-<!-- <ion-content [fullscreen]="true">
-  <ion-item>
-    <ion-button (click)="nextSpecialty()">Next Specialty:</ion-button>
-    <ion-label>
-      Current Specialty Selected:
-    </ion-label>
-    <ion-label>
-      {{specialty.name}}
-    </ion-label>
-  </ion-item>
-  <ion-card *ngFor="let student of studentList.searchStudent; let j = index">
-    <ion-item>{{student.firstName}}</ion-item>
-    <ion-item>{{student.lastName}}</ion-item>
-    <ion-item>{{student.group}}</ion-item>
-    <ion-item>{{student.studentId}}</ion-item>
-    <ion-item>{{student.gpa}}</ion-item>
-  </ion-card>
-  <ion-item>
-    <ion-label position="stacked">Input new Specialty:</ion-label>
-    <ion-input #inputSpecialty></ion-input>
-    <ion-button (click)="addSpecialty(inputSpecialty.value)">Add Specialty</ion-button>
-  </ion-item>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Add Student</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-label position="stacked">Input Name:</ion-label>
-      <ion-input #inputName></ion-input>
-      <ion-label position="stacked">Input Last Name:</ion-label>
-      <ion-input #inputLastName></ion-input>
-      <ion-label position="stacked">Input Group:</ion-label>
-      <ion-input #inputGroup></ion-input>
-      <ion-label position="stacked">Input Student ID:</ion-label>
-      <ion-input #inputId></ion-input>
-      <ion-label position="stacked">Input GPA:</ion-label>
-      <ion-input #inputGPA></ion-input>
-      <ion-button
-        (click)="addStudent(inputName.value, inputLastName.value, inputId.value, inputGroup.value, inputGPA.value)">
-        Add Student
-      </ion-button>
-    </ion-card-content>
-  </ion-card>
-</ion-content> -->
-
 <ion-content [fullscreen]="true">
   <ion-card *ngIf="show">
     <ion-card-header>
@@ -77,6 +32,7 @@
       <ion-icon name="add-outline"></ion-icon>
       Add New Student
     </ion-button>
+    <!-- editing or adding a new specialty -->
     <ion-item *ngIf="showNewSpecialty || showEditSpecialty">
       <ion-label position="stacked">Input New Specialty</ion-label>
       <ion-input [formControl]="specForm"></ion-input>
@@ -84,15 +40,17 @@
         <ion-icon name="checkmark-circle-outline"></ion-icon>
         Save</ion-button>
     </ion-item>
-    <app-student-edit *ngIf="showNewStudent" [id]="studentList.studentList[studentList.studentList.length-1].id"
-      [spec_id]="specialty.id" (studentChange)="addStudent($event)"></app-student-edit>
+    <!-- adding a new student -->
+    <app-student-add *ngIf="showNewStudent" [id]="studentList.studentList[studentList.studentList.length-1].id"
+      [spec_id]="specialty.id" (studentChange)="addStudent($event)"></app-student-add>
   </ion-card>
 
   <ion-card *ngIf="show">
     <ion-card-header>
       <ion-card-title>Students</ion-card-title>
     </ion-card-header>
-    <app-student *ngFor="let student of studentList.searchStudent; let j = index" [student]="student"
-      [fbService]="fbservice" (del)="deleteStudent($event)"></app-student>
+    <!-- editing a student -->
+    <app-student-edit *ngFor="let student of studentList.searchStudent; let j = index" [student]="student"
+      [fbService]="fbservice" (del)="deleteStudent($event)"></app-student-edit>
   </ion-card>
 </ion-content>

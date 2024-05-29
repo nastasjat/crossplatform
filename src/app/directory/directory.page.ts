@@ -7,8 +7,8 @@ import { StudentList } from './services/StudentList';
 import { ConfigService } from './services/config.service';
 import { Observable, BehaviorSubject, Subscription } from 'rxjs';
 import { FirebaseService } from './services/firebase.service';
-import { StudentModule } from './student/student.component.module';
-import { StudentEditComponent } from './student-edit/student-edit.component';
+import { StudentEditModule } from './student-edit/student-edit.component.module';
+import { StudentAddComponent } from './student-add/student-add.component';
 import * as firebase from 'firebase/app';
 
 @Component({

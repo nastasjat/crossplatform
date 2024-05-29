@@ -1,0 +1,22 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title> Add New Student </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form [formGroup]="formStudent" (ngSubmit)="addStudent()">
+      <ion-label position="stacked">Input First Name</ion-label>
+      <ion-input formControlName="firstName" #InputFirstName></ion-input>
+      <ion-label position="stacked">Input Last Name</ion-label>
+      <ion-input formControlName="lastName" #InputLastName></ion-input>
+      <ion-label position="stacked">Input StudentId</ion-label>
+      <ion-input formControlName="studentId" #InputStudentId></ion-input>
+      <ion-label position="stacked">Input GPA</ion-label>
+      <ion-input formControlName="gpa" #InputGPA></ion-input>
+      <ion-label position="stacked">Input Group</ion-label>
+      <ion-input formControlName="group" #InputGroup></ion-input>
+      <ion-button color="dark" type="submit" [disabled]="!formStudent.valid">
+        <ion-icon name="add-circle-outline"></ion-icon>
+        Save</ion-button>
+    </form>
+  </ion-card-content>
+</ion-card>

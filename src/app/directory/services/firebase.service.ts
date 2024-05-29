@@ -57,7 +57,6 @@ export class FirebaseService {
   }
 
   //delete
-  //add logic for deleting student and also deleting a specialty with all the students related to it
   deleteRecord(id: string, database: string) {
     this.dbRef = this.db.object('/' + database + '/' + id);
     this.dbRef.remove();
